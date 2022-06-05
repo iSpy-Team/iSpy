@@ -27,6 +27,8 @@ namespace Player
 
         private WeaponSwap weapon;
 
+        [SerializeField] private GameObject bullet;
+
         public bool GetShoot() => _shoot;
         public WeaponSwap GetWeapon() => weapon;
         
@@ -94,17 +96,18 @@ namespace Player
 
         private void Fire(float speed, float damage)
         {
-            var bulletPool = BulletPool.Instance.GetBullet(); // get object bullet pool
+            /*var bulletPool = BulletPool.Instance.GetBullet(); // get object bullet pool
             if (bulletPool == null) return; // return method if bullet pool equals null
 
             bulletPool.SetActive(true); // set active 
-            bulletPool.transform.position = _position;
+            bulletPool.transform.position = _position;*/
 
             var up = -transform.up;
-            var bullet = bulletPool.GetComponent<Bullet>(); // get script bullet
-            bullet.SetOwner(this);
-            bullet.Move(up, speed); // call method move for moving bullet 
-            bullet.Damage(damage); // set damage value
+            var bul = Instantiate(bullet, _position, Quaternion.identity); 
+            var newBullet = bul.GetComponent<Bullet>(); // get script bullet
+            newBullet.SetOwner(this);
+            newBullet.Move(up, speed); // call method move for moving bullet 
+            newBullet.Damage(damage); // set damage value
         }
 
         [Command]

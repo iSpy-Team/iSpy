@@ -328,6 +328,7 @@ MonoBehaviour:
   _audioSource: {fileID: 5484926738341151680}
   _clipSenjata1: {fileID: 8300000, guid: 86192a86685f9ba4db1b40d1bb1e74ca, type: 3}
   _clipSenjata2: {fileID: 8300000, guid: 875312d3d3b5da74ba6c47f6d15160c2, type: 3}
+  bullet: {fileID: 351951481848615163, guid: 91273da9da93cdc4181b727983de9968, type: 3}
 --- !u!114 &4607003322616202653
 MonoBehaviour:
   m_ObjectHideFlags: 0

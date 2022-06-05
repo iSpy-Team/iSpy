@@ -13,17 +13,20 @@ namespace Player.Bullets
 
         private PlayerShoot owner = null;
 
+        private void Start()
+        {
+            StartCoroutine(nameof(DestroyBullet));
+        }
+
         private void Update()
         {
-            if (gameObject.activeInHierarchy)
-                StartCoroutine(nameof(DestroyBullet));
+            /*if (gameObject.activeInHierarchy)
+                StartCoroutine(nameof(DestroyBullet));*/
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("AI")) return;
-
-            gameObject.SetActive(false);
 
             // if the bullet hits another player
             if (col.gameObject.CompareTag("Player"))
@@ -40,6 +43,8 @@ namespace Player.Bullets
                     Debug.Log(e.Message);
                 }
             }
+            
+            Destroy(gameObject);
         }
 
         /// <summary>
@@ -69,7 +74,7 @@ namespace Player.Bullets
         private IEnumerator DestroyBullet()
         {
             yield return new WaitForSeconds(5f);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
