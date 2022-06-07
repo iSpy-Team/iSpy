@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ef35cb82ae40a597fdf1cc0246d913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   rigidbody2D: {fileID: -7981043307573540054}
 --- !u!50 &-7981043307573540054
 Rigidbody2D:
@@ -226,7 +228,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.8490566, g: 0.34976855, b: 0.34976855, a: 1}
+      key0: {r: 0.3782078, g: 0.8509804, b: 0.34901968, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

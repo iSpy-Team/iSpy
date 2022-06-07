@@ -84,13 +84,14 @@ namespace Player
 
         private void SetSfx()
         {
-            if (_selected.WeaponType == WeaponType.Pistol)
-            {
-                _audioSource.PlayOneShot(_clipSenjata1);                
-            }else if (_selected.WeaponType == WeaponType.Shotgun)
-            {
+            //if (_selected.WeaponType == WeaponType.Pistol)
+            //{
+                //_audioSource.PlayOneShot(_clipSenjata1);                
+            //}
+            //else if (_selected.WeaponType == WeaponType.Shotgun)
+            //{
                 _audioSource.PlayOneShot(_clipSenjata1);    
-            }
+            //}
 
         }
 
