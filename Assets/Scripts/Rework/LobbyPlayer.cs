@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
+using System.Collections;
 
 /*
 	Documentation: https://mirror-networking.gitbook.io/docs/components/network-room-player
@@ -23,8 +24,8 @@ public class LobbyPlayer : NetworkRoomPlayer
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[4];
     [SerializeField] private TMP_Text[] playerReadyTexts = new TMP_Text[4];
 
-    [SyncVar(hook = nameof(HandleDisplayNameChanged))]
-    public string DisplayName = "Loading...";
+    //[SyncVar(hook = nameof(HandleDisplayNameChanged))]
+    public string DisplayName;
 
     #region Start & Stop Callbacks
 
@@ -69,8 +70,13 @@ public class LobbyPlayer : NetworkRoomPlayer
     /// </summary>
     public override void OnStartLocalPlayer()
     {
-        CmdSetDisplayName(PlayerNameInput.DisplayName);
+        //CmdSetDisplayName(PlayerNameInput.DisplayName);
         lobbyUI.SetActive(true);
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(5f);
     }
 
     /// <summary>
@@ -107,6 +113,8 @@ public class LobbyPlayer : NetworkRoomPlayer
 
         UpdateDisplay();
     }
+
+    
 
     /// <summary>
     /// This is a hook that is invoked on all player objects when exiting the room.

@@ -1333,7 +1333,7 @@ MonoBehaviour:
   - {fileID: 6355345941928728546}
   - {fileID: 4976822207858975460}
   - {fileID: 2738150862280915585}
-  DisplayName: Loading...
+  DisplayName: 
 --- !u!1 &5282727781197047379
 GameObject:
   m_ObjectHideFlags: 0
