@@ -26,7 +26,7 @@ namespace Player.Bullets
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag("AI")) return;
+            if (col.CompareTag("AI") || col.CompareTag("Bullet")) return;
 
             // if the bullet hits another player
             if (col.gameObject.CompareTag("Player"))
@@ -43,7 +43,7 @@ namespace Player.Bullets
                     Debug.Log(e.Message);
                 }
             }
-            
+
             Destroy(gameObject);
         }
 
@@ -54,7 +54,8 @@ namespace Player.Bullets
         /// <param name="speed">Set speed bullet when instantiated</param>
         public void Move(Vector2 direction, float speed)
         {
-            rigidbody2D.AddForce(direction * speed, ForceMode2D.Impulse);
+            rigidbody2D.velocity = direction * speed;
+            //rigidbody2D.AddForce(direction * speed, ForceMode2D.Impulse);
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ TagManager:
   - RoomPlayer
   - GamePlayer
   - AudioManager
+  - Bullet
   layers:
   - Default
   - TransparentFX

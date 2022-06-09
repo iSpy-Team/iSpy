@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -4022655665898943448}
   m_Layer: 8
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,9 +119,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   rigidbody2D: {fileID: -7981043307573540054}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1015
 --- !u!50 &-7981043307573540054
 Rigidbody2D:
   serializedVersion: 4
@@ -141,7 +138,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8095606133170165200
 MonoBehaviour:
@@ -287,7 +284,7 @@ MonoBehaviour:
   syncRotation: 0
   syncScale: 0
   interpolatePosition: 1
-  interpolateRotation: 1
+  interpolateRotation: 0
   interpolateScale: 0
   bufferTimeMultiplier: 1
   bufferSizeLimit: 64

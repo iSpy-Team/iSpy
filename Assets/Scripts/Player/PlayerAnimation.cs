@@ -56,7 +56,7 @@ namespace Player
             }
             else if (Input.GetKey(KeyCode.Q) || InGameUIManager.instance.PlayerUI.curHealth <= 0)
             {
-                Death();
+                //Death();
             }
             else if (weapon.GetWeapon() != null)
             {

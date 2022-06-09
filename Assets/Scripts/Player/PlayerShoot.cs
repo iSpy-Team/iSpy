@@ -26,15 +26,13 @@ namespace Player
 
         [SerializeField] private GameObject bullet;
 
-        private GameObject targetPlayer;
+        [SerializeField] private GameObject targetPlayer;
 
         //public bool GetShoot() => _shoot;
         public WeaponSwap GetWeapon() => weapon;
 
         [SyncVar][SerializeField]
         private bool goFire = false;
-
-        private Vector2 bulletDir;
 
         private void Start()
         {
@@ -65,7 +63,7 @@ namespace Player
 
                 if (goFire)
                 {
-                    Fire(_selected.Speed, _selected.Damage, bulletDir);
+                    Fire(_selected.Speed, _selected.Damage);
 
                     if (hasAuthority)
                     {
@@ -90,7 +88,7 @@ namespace Player
 
         }
 
-        private void Fire(float speed, float damage, Vector2 dir)
+        private void Fire(float speed, float damage)
         {
             /*var bulletPool = BulletPool.Instance.GetBullet(); // get object bullet pool
             if (bulletPool == null) return; // return method if bullet pool equals null
@@ -102,7 +100,7 @@ namespace Player
             var bul = Instantiate(bullet, _position, Quaternion.identity); 
             var newBullet = bul.GetComponent<Bullet>(); // get script bullet
             newBullet.SetOwner(this);
-            newBullet.Move(dir, speed); // call method move for moving bullet 
+            newBullet.Move(up, speed); // call method move for moving bullet 
             newBullet.Damage(damage); // set damage value
         }
 
@@ -116,10 +114,6 @@ namespace Player
         {
             if (targetPlayer)
             {
-                var direction = targetPlayer.transform.position - transform.position;
-
-                bulletDir =  direction;
-
                 if (hasAuthority)
                 {
                     GoFire(true);
@@ -136,10 +130,7 @@ namespace Player
 
         public void TargetPlayer(GameObject other)
         {
-            if (!targetPlayer)
-            {
-                targetPlayer = other;
-            }
+            targetPlayer = other;
         }
     }
 }
