@@ -147,7 +147,6 @@ public class GameManager : NetworkBehaviour
 
     public void GameOver()
     {
-        gameOver = true;
         //var manager = NetworkManager.singleton as LobbyNetworkManager;
 
         if (isClient && pCount <= 1)
@@ -157,7 +156,7 @@ public class GameManager : NetworkBehaviour
 
             losePanel.SetActive(false);
         }
-        if (isServer)
+        if (isServer && !gameOver)
         {
             Debug.Log("Conn Count : " + NetworkServer.connections.Count);
 
@@ -167,6 +166,7 @@ public class GameManager : NetworkBehaviour
                 winnerName = winner.playerName;
             }
         }
+        gameOver = true;
     }
 
     private IEnumerator CountPlayers()
@@ -176,9 +176,9 @@ public class GameManager : NetworkBehaviour
 
         yield return new WaitForSeconds(4f);
         if (isServer)
-        {
+        {/*
             var manager = GameObject.Find("RoomNetManager").GetComponent<RoomNetManager>();
-            manager.lobbyPlayers.Clear();
+            manager.lobbyPlayers.Clear();*/
 
             pCount = GameObject.FindGameObjectsWithTag("Player").Length;
             starting = true;

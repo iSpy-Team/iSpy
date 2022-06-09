@@ -14,8 +14,6 @@ namespace Player
         [SerializeField] private TouchField touch;
 
         [Header("Properties")]
-        [SerializeField]
-        public Button btnShoot;
         [SerializeField] private float speed;
 
         private Vector2 _mousePosition;
@@ -33,9 +31,6 @@ namespace Player
 
             if (Input.GetKey(KeyCode.A))
             {
-                if (btnShoot == null) return;
-
-                btnShoot.onClick.Invoke();
                 Debug.Log("Test");
                 _inputMovement.x = 1;
 
@@ -85,7 +80,6 @@ namespace Player
 
             joystick = GameObject.Find("Fixed Joystick").GetComponent<Joystick>();
             touch = GameObject.Find("TouchField").GetComponent<TouchField>();
-            btnShoot = GameObject.Find("BtnShoot").GetComponent<Button>();
         }
     }
 }

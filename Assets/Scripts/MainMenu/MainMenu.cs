@@ -7,7 +7,8 @@ namespace MainMenu
 {
     public class MainMenu : MonoBehaviour
     {
-        [SerializeField] private GameObject panelMenu, panelSetting, panelChangeName, creditsPanel;
+        [SerializeField] private GameObject panelMenu, panelSetting, panelChangeName, creditsPanel, tutorialPanel;
+
         [SerializeField] private GameObject serverBrowserUI;
 
         [SerializeField] private Slider bg;
@@ -28,7 +29,7 @@ namespace MainMenu
             MatchmakerClient.OnMClientConnected += OnConnectedToMatchmaker;
             MatchmakerClient.OnMClientDisconnected += OnDisconnectedFromMatchmaker;
             MatchmakerClient.OnMCFailedToConnect += OnFailedToConnectToMatchmaker;
-            SetMenu(true, false, false, false);
+            SetMenu(true, false, false, false, false);
             B_HideServerBrowser();
         }
 
@@ -71,30 +72,36 @@ namespace MainMenu
 
         public void Setting()
         {
-            SetMenu(false, true, false, false);
+            SetMenu(false, true, false, false, false);
         }
 
         public void Back()
         {
-            SetMenu(true, false, false, false);
+            SetMenu(true, false, false, false, false);
         }
 
         public void Credits()
         {
-            SetMenu(false, false, false, true);
+            SetMenu(false, false, false, true, false);
         }
 
-        private void SetMenu(bool menuActive, bool settingActive, bool changeName, bool credits)
+        private void SetMenu(bool menuActive, bool settingActive, bool changeName, bool credits, bool tutorial)
         {
             panelMenu.SetActive(menuActive);
             panelSetting.SetActive(settingActive);
             panelChangeName.SetActive(changeName);
             creditsPanel.SetActive(credits);
+            tutorialPanel.SetActive(tutorial);
         }
 
         public void ChangeName()
         {
-            SetMenu(false, false, true, false);
+            SetMenu(false, false, true, false, false);
+        }
+
+        public void ShowTutorial()
+        {
+            SetMenu(false, false, false, false, true);
         }
 
         public void B_ConnectMatchmaker()
@@ -118,6 +125,11 @@ namespace MainMenu
             MatchmakerClient.OnMClientConnected -= OnConnectedToMatchmaker;
             MatchmakerClient.OnMClientDisconnected -= OnDisconnectedFromMatchmaker;
             MatchmakerClient.OnMCFailedToConnect -= OnFailedToConnectToMatchmaker;
+        }
+
+        public void QuitApplication()
+        {
+            Application.Quit(0);
         }
     }
 }

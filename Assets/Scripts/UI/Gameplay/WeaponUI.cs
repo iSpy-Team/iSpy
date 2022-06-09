@@ -29,17 +29,24 @@ public class WeaponUI : MonoBehaviour
         gameObject.SetActive(true);
         sprite = GetComponent<Image>();
         
-        if (type == "Pistol") 
+        switch(type)
         {
-            sprite.sprite = weaponSpriteList[0];
-        }
-        else if(type == "Shotgun")
-        {
-            sprite.sprite = weaponSpriteList[1];
-        }
-        else
-        {
-            Debug.Log("Sprite can't relate");
+            case "Pistol":
+                sprite.sprite = weaponSpriteList[0];
+                break;
+            case "Shotgun":
+                sprite.sprite = weaponSpriteList[1];
+                break;
+            case "Sniper":
+                sprite.sprite = weaponSpriteList[2];
+                break;
+            case "Rifle":
+                sprite.sprite = weaponSpriteList[3];
+                break;
+
+            default:
+                sprite.sprite = weaponSpriteList[0];
+                break;
         }
 
         amountText.text = amount.ToString();
