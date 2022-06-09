@@ -15,9 +15,6 @@ namespace Player
         // Properties
         private float _timer;
 
-        [SyncVar][SerializeField] 
-        private bool _shoot = false;
-
         //Component
         private Vector2 _position;
         private Weapon _selected;
@@ -29,26 +26,24 @@ namespace Player
 
         [SerializeField] private GameObject bullet;
 
-        public bool GetShoot() => _shoot;
+        private GameObject targetPlayer;
+
+        //public bool GetShoot() => _shoot;
         public WeaponSwap GetWeapon() => weapon;
-        
+
+        [SyncVar][SerializeField]
+        private bool goFire = false;
+
+        private Vector2 bulletDir;
+
         private void Start()
         {
             weapon = GetComponent<WeaponSwap>();
-
-            if (hasAuthority)
-            {
-                InGameUIManager.instance.ShootButton.SetTargetPlayer(this);
-            }
         }
         
         private void Update()
         {
-            if (_shoot)
-            {
-                SetWeapon();
-            }
-            
+            SetWeapon();         
         }
 
         private void SetWeapon()
@@ -58,27 +53,27 @@ namespace Player
                 _selected = weapon.GetWeapon();
                 _position = _selected.OriginShoot.position;
 
-                var hit = Physics2D.Raycast(_position, _selected.OriginShoot.TransformDirection(Vector2.up), distance);
+                _timer += Time.deltaTime;
+                if ((!(_timer >= _selected.FireSpeed))) return;
+                
+                if (_selected.amount <= 0) return;
+                
+                //sfx weapons
+                SetSfx();
+                
+                Shoot(_selected, weapon);
 
-                if (hit.collider)
+                if (goFire)
                 {
-                    _timer += Time.deltaTime;
-                    if ((!(_timer >= _selected.FireSpeed))) return;
-
-                    if (_selected.amount <= 0) return;
-                    
-                    //sfx weapons
-                    SetSfx();
-
-                    Fire(_selected.Speed, _selected.Damage);
+                    Fire(_selected.Speed, _selected.Damage, bulletDir);
 
                     if (hasAuthority)
                     {
                         weapon.DecreaseBullet(1);
                     }
-
-                    _timer = 0f;
                 }
+
+                _timer = 0f; 
             }
         }
 
@@ -95,7 +90,7 @@ namespace Player
 
         }
 
-        private void Fire(float speed, float damage)
+        private void Fire(float speed, float damage, Vector2 dir)
         {
             /*var bulletPool = BulletPool.Instance.GetBullet(); // get object bullet pool
             if (bulletPool == null) return; // return method if bullet pool equals null
@@ -107,14 +102,44 @@ namespace Player
             var bul = Instantiate(bullet, _position, Quaternion.identity); 
             var newBullet = bul.GetComponent<Bullet>(); // get script bullet
             newBullet.SetOwner(this);
-            newBullet.Move(up, speed); // call method move for moving bullet 
+            newBullet.Move(dir, speed); // call method move for moving bullet 
             newBullet.Damage(damage); // set damage value
         }
 
         [Command]
-        public void Shoot()
+        public void GoFire(bool b)
         {
-            _shoot = !_shoot;
+            goFire = b;
+        }
+
+        private void Shoot(Weapon gun, WeaponSwap equip)
+        {
+            if (targetPlayer)
+            {
+                var direction = targetPlayer.transform.position - transform.position;
+
+                bulletDir =  direction;
+
+                if (hasAuthority)
+                {
+                    GoFire(true);
+                }
+            }
+            else
+            {
+                if (hasAuthority)
+                {
+                    GoFire(false);
+                }
+            }
+        }
+
+        public void TargetPlayer(GameObject other)
+        {
+            if (!targetPlayer)
+            {
+                targetPlayer = other;
+            }
         }
     }
 }

@@ -20,7 +20,6 @@ public class RotateWeaponTurret : MonoBehaviour
 
     private void Rotation()
     {
-       
         var target = TargetPlayer();
 
         if (target)

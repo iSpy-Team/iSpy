@@ -119,6 +119,9 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   rigidbody2D: {fileID: -7981043307573540054}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1015
 --- !u!50 &-7981043307573540054
 Rigidbody2D:
   serializedVersion: 4
