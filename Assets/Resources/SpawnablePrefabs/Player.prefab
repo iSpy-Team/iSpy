@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c569fd1d5cbf284c88be47848e5cc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detection: 0
 --- !u!1 &3071480604168676578
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,12 +429,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   distance: 10
-  _shoot: 0
   _audioSource: {fileID: -7655025651751179623}
   _clipSenjata1: {fileID: 8300000, guid: 86192a86685f9ba4db1b40d1bb1e74ca, type: 3}
   _clipSenjata2: {fileID: 8300000, guid: 875312d3d3b5da74ba6c47f6d15160c2, type: 3}
   bullet: {fileID: 351951481848615163, guid: 91273da9da93cdc4181b727983de9968, type: 3}
-  _detectionPlayer: {fileID: 0}
+  targetPlayer: {fileID: 0}
   goFire: 0
 --- !u!114 &4607003322616202653
 MonoBehaviour:
@@ -452,6 +450,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   playerName: 
+  avatar: {fileID: 21300000, guid: be82d2cacd456684494cf094579beffc, type: 3}
   _source: {fileID: -7655025651751179623}
   _animation: {fileID: 4255690335507957683}
 --- !u!114 &4607003322616202647
@@ -471,7 +470,6 @@ MonoBehaviour:
   joystick: {fileID: 0}
   rigidbody2D: {fileID: 4607003322616202643}
   touch: {fileID: 0}
-  btnShoot: {fileID: 0}
   speed: 5
 --- !u!114 &5130564411622606281
 MonoBehaviour:

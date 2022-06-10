@@ -21,11 +21,14 @@ public class LobbyPlayer : NetworkRoomPlayer
 {
     [SerializeField] private GameObject lobbyUI;
     [SerializeField] private GameObject[] nameHolder;
-    [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[4];
+    [SerializeField] public TMP_Text[] playerNameTexts = new TMP_Text[4];
     [SerializeField] private TMP_Text[] playerReadyTexts = new TMP_Text[4];
 
+
+    public LobbyPlayerUI playerUI;
+
     //[SyncVar(hook = nameof(HandleDisplayNameChanged))]
-    public string DisplayName;
+    //public string DisplayName;
 
     #region Start & Stop Callbacks
 
@@ -52,6 +55,7 @@ public class LobbyPlayer : NetworkRoomPlayer
     {
         RoomNetManager room = NetworkManager.singleton as RoomNetManager;
         room.lobbyPlayers.Add(this);
+        playerUI = GetComponent<LobbyPlayerUI>();
     }
 
     /// <summary>
@@ -71,6 +75,12 @@ public class LobbyPlayer : NetworkRoomPlayer
     public override void OnStartLocalPlayer()
     {
         //CmdSetDisplayName(PlayerNameInput.DisplayName);
+        var playerName = PlayerNameInput.DisplayName;
+        if (string.IsNullOrEmpty(playerName))
+        {
+            playerName = "Nemo";
+        }
+        //playerUI.CmdSetDisplayName(playerName);
         lobbyUI.SetActive(true);
     }
 
@@ -112,6 +122,7 @@ public class LobbyPlayer : NetworkRoomPlayer
         }
 
         UpdateDisplay();
+        //playerUI.UpdateDisplayName();
     }
 
     
@@ -126,6 +137,7 @@ public class LobbyPlayer : NetworkRoomPlayer
             lobbyUI.SetActive(false);
         }
         UpdateDisplay();
+        //playerUI.UpdateDisplayName();
     }
 
     #endregion Room Client Callbacks
@@ -137,7 +149,11 @@ public class LobbyPlayer : NetworkRoomPlayer
     /// </summary>
     /// <param name="oldIndex">The old index value</param>
     /// <param name="newIndex">The new index value</param>
-    public override void IndexChanged(int oldIndex, int newIndex) => UpdateDisplay();
+    public override void IndexChanged(int oldIndex, int newIndex)
+    {
+        UpdateDisplay();
+        //playerUI.UpdateDisplayName();
+    }
 
     /// <summary>
     /// This is a hook that is invoked on clients when a RoomPlayer switches between ready or not ready.
@@ -147,13 +163,13 @@ public class LobbyPlayer : NetworkRoomPlayer
     /// <param name="newReadyState">The new readyState value</param>
     public override void ReadyStateChanged(bool oldReadyState, bool newReadyState) => UpdateDisplay();
 
-    public void HandleDisplayNameChanged(string oldValue, string newValue) => UpdateDisplay();
+    //public void HandleDisplayNameChanged(string oldValue, string newValue) => UpdateDisplay();
 
     #endregion SyncVar Hooks
 
     #region Optional UI
 
-    private void UpdateDisplay()
+    public void UpdateDisplay()
     {
         RoomNetManager room = NetworkManager.singleton as RoomNetManager;
         if (room)
@@ -165,6 +181,7 @@ public class LobbyPlayer : NetworkRoomPlayer
                     if (player.hasAuthority)
                     {
                         player.UpdateDisplay();
+                        //player.playerUI.UpdateDisplayName();
                         break;
                     }
                 }
@@ -180,7 +197,7 @@ public class LobbyPlayer : NetworkRoomPlayer
 
             for (int i = 0; i < room.roomSlots.Count; i++)
             {
-                playerNameTexts[i].text = room.lobbyPlayers[i].DisplayName;
+                playerNameTexts[i].text = string.Empty;
                 playerReadyTexts[i].text = room.roomSlots[i].readyToBegin ?
                     "<color=green>Ready</color>" :
                     "<color=red>Not Ready</color>";
@@ -231,7 +248,7 @@ public class LobbyPlayer : NetworkRoomPlayer
         {
             Debug.Log(displayName);
             if (string.IsNullOrEmpty(displayName)) displayName = "nemo";
-            DisplayName = displayName;
+            //DisplayName = displayName;
         }
         catch (Exception e)
         {

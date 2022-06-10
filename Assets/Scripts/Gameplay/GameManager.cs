@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 using Player;
 using TMPro;
@@ -34,7 +35,13 @@ public class GameManager : NetworkBehaviour
     [SerializeField]
     private TextMeshProUGUI winText;
 
-    [SerializeField] private GameObject losePanel;
+    [SerializeField]
+    private GameObject losePanel;
+
+    [SerializeField]
+    private Image winAvatar;
+
+    private Sprite temp;
 
     [SyncVar]
     public List<GameObject> players = new List<GameObject>();
@@ -46,7 +53,10 @@ public class GameManager : NetworkBehaviour
             if (isClient)
             {
                 Debug.Log("Panel Activated");
+                var winner = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+                winAvatar.sprite = winner.avatar;
                 winPanel.SetActive(true);
+                losePanel.SetActive(false);
             }
         }
     }
@@ -148,22 +158,25 @@ public class GameManager : NetworkBehaviour
     public void GameOver()
     {
         //var manager = NetworkManager.singleton as LobbyNetworkManager;
-
+/*
         if (isClient && pCount <= 1)
         {
             if (!winPanel.activeInHierarchy)
+            {
                 winPanel.SetActive(true);
+            }
 
             losePanel.SetActive(false);
-        }
+        }*/
         if (isServer && !gameOver)
         {
             Debug.Log("Conn Count : " + NetworkServer.connections.Count);
-
             var winner = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+
             if (winner != null)
             {
                 winnerName = winner.playerName;
+                temp = winner.avatar;
             }
         }
         gameOver = true;
@@ -174,7 +187,7 @@ public class GameManager : NetworkBehaviour
         var manager = NetworkManager.singleton as LobbyNetworkManager;
         */
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(10f);
         if (isServer)
         {/*
             var manager = GameObject.Find("RoomNetManager").GetComponent<RoomNetManager>();

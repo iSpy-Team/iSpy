@@ -23,6 +23,7 @@ public class PlayerNameInput : MonoBehaviour
     {
         if (nameInputField.text == "") { messageError.text = "Username must be filled"; return; }
         DisplayName = nameInputField.text;
+        if (string.IsNullOrEmpty(DisplayName)) DisplayName = "nemo";
         PlayerPrefs.SetString(PlayerPrefsNameKey, DisplayName);
     }
 }

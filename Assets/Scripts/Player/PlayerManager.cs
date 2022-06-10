@@ -2,6 +2,7 @@ using System;
 using Player.Item;
 using Player.Weapons;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 using System.Collections;
 
@@ -17,6 +18,8 @@ namespace Player
         private WeaponSwap weapon;
 
         public string playerName;
+
+        public Sprite avatar; 
 
         [SerializeField] private AudioSource _source;
 
