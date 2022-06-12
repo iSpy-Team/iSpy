@@ -57,7 +57,6 @@ namespace Player.Weapons
         [Command(requiresAuthority =false)]
         private void CmdDecreaseBullet(int number)
         {
-            Debug.Log(netId + " sisa peluru : " + amount);
             amount -= number;
         }
         

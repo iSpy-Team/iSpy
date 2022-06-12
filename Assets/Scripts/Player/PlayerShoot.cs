@@ -28,7 +28,6 @@ namespace Player
 
         [SerializeField] private GameObject targetPlayer;
 
-        //public bool GetShoot() => _shoot;
         public WeaponSwap GetWeapon() => weapon;
 
         [SyncVar][SerializeField]
@@ -44,6 +43,9 @@ namespace Player
             SetWeapon();         
         }
 
+        /// <summary>
+        ///   <para>Set weapon that player pick up.</para>
+        /// </summary>
         private void SetWeapon()
         { 
             if (weapon.GetWeapon())
@@ -75,41 +77,42 @@ namespace Player
             }
         }
 
+        /// <summary>
+        ///   <para>Play sfx when shoot.</para>
+        /// </summary>
         private void SetSfx()
         {
-            //if (_selected.WeaponType == WeaponType.Pistol)
-            //{
-                //_audioSource.PlayOneShot(_clipSenjata1);                
-            //}
-            //else if (_selected.WeaponType == WeaponType.Shotgun)
-            //{
-                _audioSource.PlayOneShot(_clipSenjata1);    
-            //}
-
+            _audioSource.PlayOneShot(_clipSenjata1);
         }
 
+        /// <summary>
+        ///   <para>Fire bullet to shoot player.</para>
+        /// </summary>
+        /// <param name="speed">Set value speed</param>
+        /// <param name="damage">Set value damage</param>
         private void Fire(float speed, float damage)
         {
-            /*var bulletPool = BulletPool.Instance.GetBullet(); // get object bullet pool
-            if (bulletPool == null) return; // return method if bullet pool equals null
-
-            bulletPool.SetActive(true); // set active 
-            bulletPool.transform.position = _position;*/
-
             var up = -transform.up;
             var bul = Instantiate(bullet, _position, Quaternion.identity); 
-            var newBullet = bul.GetComponent<Bullet>(); // get script bullet
+            var newBullet = bul.GetComponent<Bullet>();
             newBullet.SetOwner(this);
-            newBullet.Move(up, speed); // call method move for moving bullet 
-            newBullet.Damage(damage); // set damage value
+            newBullet.Move(up, speed);
+            newBullet.Damage(damage);
         }
 
+        /// <summary>
+        ///   <para>Command to set bool for detetect if player have to shoot.</para>
+        /// </summary>
+        /// <param name="b">Set value goFire true or false</param>
         [Command]
         public void GoFire(bool b)
         {
             goFire = b;
         }
 
+        /// <summary>
+        ///   <para>Method for player shoot.</para>
+        /// </summary>
         private void Shoot(Weapon gun, WeaponSwap equip)
         {
             if (targetPlayer)
@@ -128,6 +131,9 @@ namespace Player
             }
         }
 
+        /// <summary>
+        ///   <para>To set target player to shoot.</para>
+        /// </summary>
         public void TargetPlayer(GameObject other)
         {
             targetPlayer = other;

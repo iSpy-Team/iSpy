@@ -32,18 +32,15 @@ public class TurretNPC : NetworkBehaviour
 
     private void Update()
     {
-        //Rotate();\
         if (_detectionPlayer.detection)
         {   
             CmdAttack();
         }
     }
 
-    private void Rotate()
-    {
-        turretWeapon.Rotate(0, 0, 0.1f, Space.Self);
-    }
-
+    /// <summary>
+    ///   <para>Command to NPC attack.</para>
+    /// </summary>
     private void CmdAttack()
     {
         _timerToFire += Time.deltaTime;

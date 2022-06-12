@@ -18,6 +18,9 @@ public class RotateWeaponTurret : MonoBehaviour
         Rotation();
     }
 
+    /// <summary>
+    ///   <para>Rotate to target player.</para>
+    /// </summary>
     private void Rotation()
     {
         var target = TargetPlayer();
@@ -36,6 +39,9 @@ public class RotateWeaponTurret : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///   <para>Tio detect player in range. Return gameobject.</para>
+    /// </summary>
     private GameObject TargetPlayer()
     {
         var playerList = _detectionPlayer.GetListPlayer();

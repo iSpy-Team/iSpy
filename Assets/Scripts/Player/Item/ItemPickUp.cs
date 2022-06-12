@@ -28,13 +28,21 @@ namespace Player.Item
                     throw new ArgumentOutOfRangeException();
             }
         }
-        
+
+        /// <summary>
+        ///   <para>To call method heal if player pickup item heal.</para>
+        /// </summary>
+        /// <param name="player">Target player.</param>
         private void PickUpItemHealth(PlayerManager player)
         {
             player.Heal(10);
             Destroy(gameObject);
         }
-        
+
+        /// <summary>
+        ///   <para>To call method SetWeapon if player pickup weapon.</para>
+        /// </summary>
+        /// <param name="player">Target player.</param>
         private void PickUpItemAmount(WeaponSwap player)
         {
             player.SetWeapon(gameObject.GetComponent<Weapon>());

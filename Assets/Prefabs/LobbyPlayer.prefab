@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  showRoomGUI: 1
+  showRoomGUI: 0
   readyToBegin: 0
   index: 0
   lobbyUI: {fileID: 8333151158988203501}
@@ -1349,11 +1349,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  playerNameTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   DisplayName: 
 --- !u!1 &5282727781197047379
 GameObject:

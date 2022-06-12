@@ -43,6 +43,9 @@ namespace Player
             Animation();
         }
 
+        /// <summary>
+        ///   <para>Client callback when call animation.</para>
+        /// </summary>
         [ClientCallback]
         private void Animation()
         {
@@ -66,15 +69,11 @@ namespace Player
             {
                 Idle();
             }
-
-            //Debug.Log("Health " + InGameUIManager.instance.PlayerUI.curHealth);
-
-            /*if (pm.ItemPlayer.health <= 0)
-            {
-                Death();
-            }*/
         }
 
+        /// <summary>
+        ///   <para>Call for animation death.</para>
+        /// </summary>
         public void Death()
         {
             Debug.Log("Death");
@@ -87,7 +86,9 @@ namespace Player
             SetAnimation("Death", true);
         }
 
-
+        /// <summary>
+        ///   <para>Call for animation walk if player got weapon.</para>
+        /// </summary>
         private void WalkWithWeapon()
         {
             SetAnimation("Idle", false);
@@ -98,6 +99,9 @@ namespace Player
             SetAnimation("Death", false);
         }
 
+        /// <summary>
+        ///   <para>Call for animation idle.</para>
+        /// </summary>
         private void Idle()
         {
             SetAnimation("Idle", true);
@@ -108,6 +112,9 @@ namespace Player
             SetAnimation("Death", false);
         }
 
+        /// <summary>
+        ///   <para>Call for animation idle if player have weapon.</para>
+        /// </summary>
         private void IdleWeapon()
         {
             SetAnimation("Idle", false);
@@ -118,6 +125,9 @@ namespace Player
             SetAnimation("Death", false);
         }
 
+        /// <summary>
+        ///   <para>Call for animation reload weapon ammo.</para>
+        /// </summary>
         private void Reload()
         {
             SetAnimation("Idle", false);
@@ -128,6 +138,9 @@ namespace Player
             SetAnimation("Death", false);
         }
 
+        /// <summary>
+        ///   <para>Call for animation walk.</para>
+        /// </summary>
         private void Walk()
         {
             SetAnimation("Idle", false);

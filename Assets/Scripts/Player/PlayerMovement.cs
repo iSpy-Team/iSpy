@@ -9,7 +9,6 @@ namespace Player
         [Header("Components")]
         [SerializeField] private Joystick joystick;
 
-        //[SerializeField] private new Camera camera;
         [SerializeField] private new Rigidbody2D rigidbody2D;
         [SerializeField] private TouchField touch;
 
@@ -31,7 +30,6 @@ namespace Player
 
             if (Input.GetKey(KeyCode.A))
             {
-                Debug.Log("Test");
                 _inputMovement.x = 1;
 
                 rigidbody2D.MovePosition(rigidbody2D.position + _inputMovement * speed * Time.fixedDeltaTime);
@@ -40,6 +38,9 @@ namespace Player
             InputMovement();
         }
 
+        /// <summary>
+        ///   <para>Handle input for movement.</para>
+        /// </summary>
         private void InputMovement()
         {
             if (joystick == null && touch == null) return;
@@ -50,15 +51,14 @@ namespace Player
             _mousePosition.x -= touch.TouchDistance.x * 0.2f;
         }
 
+        /// <summary>
+        ///   <para>Method call for movement.</para>
+        /// </summary>
         private void Movement()
         {
-            //if (!hasAuthority) return;
-
-            //rigidbody2D.MovePosition(rigidbody2D.position + _inputMovement * speed * Time.fixedDeltaTime);
             var input = new Vector3(_inputMovement.x, _inputMovement.y, 0);
             transform.Translate(input * speed * Time.fixedDeltaTime, Space.Self);
-            rigidbody2D.rotation = _mousePosition.x; ;
-
+            rigidbody2D.rotation = _mousePosition.x;
         }
 
         private void FixedUpdate()
@@ -66,14 +66,9 @@ namespace Player
             Movement();
         }
 
-        private void LateUpdate()
-        {
-            //var cameraTransform = camera.transform;
-            //var position = transform.position;
-            //cameraTransform.position = new Vector3(position.x, position.y, -10f);
-            //cameraTransform.rotation = Quaternion.identity;
-        }
-
+        /// <summary>
+        ///   <para>Initialize and set object reference.</para>
+        /// </summary>
         private void Initialize()
         {
             if (!hasAuthority && !isLocalPlayer) return;

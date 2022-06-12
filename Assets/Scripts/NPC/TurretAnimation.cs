@@ -14,23 +14,16 @@ public class TurretAnimation : MonoBehaviour
     private State _state = State.LEFT;
     private Animator _animator;
     private Transform _transform;
-
-    private Turret _turret;
     
     void Start()
     {
         _animator = GetComponent<Animator>();
         _transform = GetComponent<Transform>();
-        _turret = GetComponent<Turret>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*Debug.Log(_state.ToString());
-        Debug.Log(transform.localEulerAngles.z);
-        SetState();*/
-       // _state = _turret.GetState;
         SetStateAnimation();
     }
 

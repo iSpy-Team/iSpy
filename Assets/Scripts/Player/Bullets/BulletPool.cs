@@ -25,6 +25,9 @@ namespace Player.Bullets
             SpawnBullet();
         }
 
+        /// <summary>
+        ///   <para>To spawn bullet in bullet pool.</para>
+        /// </summary>
         public void SpawnBullet()
         {
             for (var i = 0; i < AmountPool; i++)

@@ -19,8 +19,6 @@ public class Soldier : NetworkBehaviour
     private float maxDistance;
     public float distance;
 
-    private bool isBumping;
-
     [SerializeField] protected float fireSpeed;
     protected float timerToFire;
 
@@ -73,6 +71,10 @@ public class Soldier : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    ///   <para>Moving soldier NPC. Only run on the server.</para>
+    /// </summary>
+    /// <param name="speed">Set value speed.</param>
     [Server]
     private void Move(float speed)
     {
@@ -100,12 +102,21 @@ public class Soldier : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    ///   <para>To flip soldier sprite.</para>
+    /// </summary>
+    /// <param name="x">Set value x.</param>
+    /// <param name="y">Set value y.</param>
+    /// <param name="z">Set value z.</param>
     private void Flip(float x, float y, float z)
     {
         transform.localScale = new Vector3(x, y, z);
         child.transform.localEulerAngles = new Vector3(0, 0, child.transform.localEulerAngles.z + 180);
     }
 
+    /// <summary>
+    ///   <para>Method for soldier attack.</para>
+    /// </summary>
     private void Attack()
     {
         timerToFire += Time.deltaTime;

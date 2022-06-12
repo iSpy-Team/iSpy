@@ -18,17 +18,10 @@ namespace Player.Bullets
             StartCoroutine(nameof(DestroyBullet));
         }
 
-        private void Update()
-        {
-            /*if (gameObject.activeInHierarchy)
-                StartCoroutine(nameof(DestroyBullet));*/
-        }
-
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("AI") || col.CompareTag("Bullet")) return;
 
-            // if the bullet hits another player
             if (col.gameObject.CompareTag("Player"))
             {
                 Debug.Log("Fire "+col.gameObject.name);
@@ -55,7 +48,6 @@ namespace Player.Bullets
         public void Move(Vector2 direction, float speed)
         {
             rigidbody2D.velocity = direction * speed;
-            //rigidbody2D.AddForce(direction * speed, ForceMode2D.Impulse);
         }
 
         /// <summary>
@@ -67,11 +59,18 @@ namespace Player.Bullets
             _damage = damage;
         }
 
+        /// <summary>
+        ///   <para>Set owner client of this bullet.</para>
+        /// </summary>
+        /// <param name="player">Target player.</param>
         public void SetOwner(PlayerShoot player)
         {
             owner = player;
         }
 
+        /// <summary>
+        ///   <para>Destroy bullet after 5 seconds.</para>
+        /// </summary>
         private IEnumerator DestroyBullet()
         {
             yield return new WaitForSeconds(5f);
