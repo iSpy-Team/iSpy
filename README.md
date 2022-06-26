@@ -1,17 +1,17 @@
 <p align="center">
-  <img width="200" height="200" src="https://i.postimg.cc/QCh678ZM/Icon.png)](https://postimg.cc/FdCg5QRt">
+  <img width="200" height="200" src="https://i.postimg.cc/QCh678ZM/Icon.png">
 </p>
 
 <p align="center">
-  <img width="400" height="200" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3c0bc954-97ec-4052-b034-8549d285d2c1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220602%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220602T225124Z&X-Amz-Expires=86400&X-Amz-Signature=404e4e1d1144307e44cc2f419bce5464b998274524e7a68fe6ade089eaf2ef7c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject">
+  <img width="400" height="200" src="https://i.postimg.cc/BQspmVg7/Screenshot-20220627-002449.png">
 
-  <img width="400" height="200" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c694da70-4f92-4993-afa1-748c299d0ea2/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220602%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220602T225313Z&X-Amz-Expires=86400&X-Amz-Signature=a53945957fec962bec079ff65d06e6ba7ffecd06b2de513a31b2dd5d4cbe3e60&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject">
+  <img width="400" height="200" src="https://i.postimg.cc/Y0F95Rzd/Screenshot-20220627-001517.png">
 </p>
 
 <p align="center">
-  <img width="400" height="200" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c7818730-0caf-4f8e-8573-9a64e31f908a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220602%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220602T225619Z&X-Amz-Expires=86400&X-Amz-Signature=93dbf3d69ef65e36e01838f5b0bdc01cbd92aac76faefb4df4263fe4c6f780b7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject">
+  <img width="400" height="200" src="https://i.postimg.cc/Hkvr7rn4/Screenshot-20220627-002011.pngt">
 
-  <img width="400" height="200" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/aa26aa0c-bd82-4793-935c-09c5278f7bf7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220602%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220602T225648Z&X-Amz-Expires=86400&X-Amz-Signature=bb784c9757263c2a18b8dd5a88207863c4c1bd8bc9fb75df8b2d2e21aff226e9&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject">
+  <img width="400" height="200" src="https://i.postimg.cc/J4vwDmmH/Screenshot-20220627-002222.png">
 </p>
 
 # iSpy
@@ -41,8 +41,4 @@ Player will control their Spy with the following controls :
 
 
 ## Server Documentation
-### Deployment
-https://github.com/marvel-natanael/iSpy/commit/be19f1c88d7d3a238351959b621fee3160b2f5a8
-
-### Usage
-https://github.com/LeonardBrowntail/iSpy-Matchmaker/blob/main/README.md
+https://github.com/iSpy-Team/iSpy-Matchmaker
